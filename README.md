@@ -1,15 +1,18 @@
 ---------------------------------------------------------------------------
 ---------------------------------------------------------------------------
-Francescos vim settings :-)
+### Francescos vim settings and awesome cheatsheet :-)
 ---------------------------------------------------------------------------
 ---------------------------------------------------------------------------
 
+Intended for personal use, but if anybody find it interesting they are welcome
+to have a look.
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-Line to get all my settings (just put it in a ~/.vimcr file):
-source ~/.vim/.vimrc
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+__To get my settings, after cloning this repository in the ~/.vim directory add
+a ~/.vimcr file with:__
+> source ~/.vim/.vimrc
 
+
+## Start of personal cheatsheet
 
 entire file: %
 copy entire file to clipboard: :%y+
