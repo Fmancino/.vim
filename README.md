@@ -126,3 +126,18 @@ Move to the start of the first line in your range
 <C-V>
 Move down to the last line in your range:
 Ifoo<ESC>     -inserts whith big I just after you hit <ESC>
+
+---------------------------------------------------------------------------
+Vimdiff:
+
+
+:diffthis
+:diffoff
+
+]c :        - next difference
+[c :        - previous difference
+do          - diff obtain
+dp          - diff put
+zo          - open folded text
+zc          - close folded text
+:diffupdate - re-scan the files for differences
