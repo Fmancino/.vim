@@ -1,23 +1,32 @@
-
 set nocompatible
+
 filetype off
-let g:pathogen_disabled = []
+
+" set UTF-8 encoding
+set enc=utf-8
+set fenc=utf-8
+set termencoding=utf-8
+set fileencoding=utf-8  " The encoding written to file.
+
+"let g:pathogen_disabled = []
 
 if has ("gui_running")
 	execute pathogen#infect()
 	set colorcolumn=80
 endif
 
+
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
+" turn syntax highlighting on
+colo molokai
+set t_Co=256
 syntax on
-filetype plugin indent on
 
+filetype plugin indent on
 
 set modelines=0  "security issues
 
-set encoding=utf-8  " The encoding displayed.
-set fileencoding=utf-8  " The encoding written to file.
 
 ":set mouse=a "be able to use mouse
 :set mouse="" 
@@ -38,8 +47,21 @@ set laststatus=2
 set relativenumber
 "set undofile
 
+" highlight matching braces
+set showmatch
+" intelligent comments
+set comments=sl:/*,mb:\ *,elx:\ */
+
+" use intelligent indentation for C
+set smartindent
+
 set ignorecase
 set smartcase
+
+" configure tabwidth and insert spaces instead of tabs
+set tabstop=4        " tab width is 4 spaces
+set shiftwidth=4     " indent also with 4 spaces
+set expandtab        " expand tabs to spaces
 
 let mapleader = "," "the <leader> map
 
@@ -54,6 +76,15 @@ set wrap
 set textwidth=79
 set formatoptions=qrn1
 
+" Enhanced keyboard mappings
+"
+" in normal  will save the file
+nnoremap <leader-M> :w<CR>
+" in insert will exit insert, save, enters insert again
+inoremap <leader-M> <ESC>:w<CR>i
+" switch between header/source with F4
+map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
+
 
 "mappping moving trought windows in vertical fashion, maximixing the window
 "you are on
@@ -64,16 +95,10 @@ nnoremap <S-Down> <C-W>j<C-W>_
 
 set wmh=0
 
-"noremap ª <C-W>j
-"noremap º <C-W>k
-"noremap ∆ <C-W>h
-"noremap ¬ <C-W>l
-
-noremap <A-Down> <C-W>j  
-noremap <A-Up> <C-W>k
-noremap <A-Left> <C-W>h
-noremap <A-Right> <C-W>l>
-
+noremap <C-Down>  <C-W>j
+noremap <C-Up>  <C-W>k
+noremap <C-Left>  <C-W>h
+noremap <C-Right>  <C-W>l
 
 
 "nnoremap <up> <nop>
@@ -84,13 +109,34 @@ noremap <A-Right> <C-W>l>
 "inoremap <down> <nop>
 "inoremap <left> <nop>
 "inoremap <right> <nop> optionally make life relly hard and pure!
+
 nnoremap j gj
 nnoremap k gk
 inoremap jj <ESC> 
 
 nnoremap <S-Enter> O<Esc>
 nnoremap <CR> o<Esc>
+
+" in diff mode we use the spell check keys for merging
+if &diff
+  ” diff settings
+  map <M-Down> ]c
+  map <M-Up> [c
+  map <M-Left> do
+  map <M-Right> dp
+  map <F9> :new<CR>:read !svn diff<CR>:set syntax=diff buftype=nofile<CR>gg
+else
+  " spell settings
+  :setlocal spell spelllang=en
+  " set the spellfile - folders must exist
+  set spellfile=~/.vim/spellfile.add
+  map <M-Down> ]s
+  map <M-Up> [s
+endif
+
 set guifont=Inconsolata\ 13 
+
+
 
 au FocusLost * :wa  "save automatically
 
@@ -99,31 +145,31 @@ au FocusLost * :wa  "save automatically
 " Maintainer:   Tim Pope <http://tpo.pe/>
  " Version:      1.1
 
- if exists('g:loaded_sensible') || &compatible
+if exists('g:loaded_sensible') || &compatible
    finish
-  else
-    let g:loaded_sensible = 'yes'
- endif
+else
+	let g:loaded_sensible = 'yes'
+endif
 
-   if has('autocmd')
-      filetype plugin indent on
-     endif
-     if has('syntax') && !exists('g:syntax_on')
-     syntax enable
-   endif
+if has('autocmd')
+  filetype plugin indent on
+  endif
+  if has('syntax') && !exists('g:syntax_on')
+   syntax enable
+endif
 
          " Use :help 'option' to see the documentation for the given option.
 
-    set autoindent
-    set backspace=indent,eol,start
-    set complete-=i
-    set smarttab
+set autoindent
+set backspace=indent,eol,start
+set complete-=i
+set smarttab
 
-    set nrformats-=octal
+set nrformats-=octal
 
 if !has('nvim') && &ttimeoutlen == -1
-      set ttimeout
-      set ttimeoutlen=100
+  set ttimeout
+  set ttimeoutlen=100
 endif
 
 set incsearch
@@ -133,57 +179,54 @@ set ruler
 set wildmenu
 
 if !&scrolloff
-      set scrolloff=1
+  set scrolloff=1
 endif
 if !&sidescrolloff
-    set sidescrolloff=5
+  set sidescrolloff=5
 endif
 set display+=lastline
 
- if &encoding ==# 'latin1' && has('gui_running')
-    set encoding=utf-8
- endif
+if &encoding ==# 'latin1' && has('gui_running')
+  set encoding=utf-8
+endif
 
 if &listchars ==# 'eol:$'
-	set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 endif
 
 if v:version > 703 || v:version == 703 && has("patch541")
-     set formatoptions+=j " Delete comment character when
-"                        joining commented lines
+  set formatoptions+=j " Delete comment character when joining commented lines
 endif
 
 if has('path_extra')
-      setglobal tags-=./tags tags-=./tags; tags^=./tags;
-endif 
-
-if  &shell =~# 'fish$' && (v:version < 704 || v:version == 704 && !has('patch276'))
-
-set shell=/bin/bash
+  setglobal tags-=./tags tags-=./tags; tags^=./tags;
 endif
+
+if &shell =~# 'fish$' && (v:version < 704 || v:version == 704 && !has('patch276'))
+  set shell=/bin/bash
+endif
+
 set autoread
 
 if &history < 1000
-       set history=1000
+  set history=1000
 endif
 if &tabpagemax < 50
   set tabpagemax=50
 endif
 if !empty(&viminfo)
-set viminfo^=!
+  set viminfo^=!
 endif
 set sessionoptions-=options
 
-" Allow color schemes to do bright colors
-"  without forcing bold.
+" Allow color schemes to do bright colors without forcing bold.
 if &t_Co == 8 && $TERM !~# '^linux\|^Eterm'
-       set t_Co=16
+  set t_Co=16
 endif
 
-" Load matchit.vim, but only if the user
-"   hasn't installed a newer version.
-if  !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-	runtime! macros/matchit.vim
+" Load matchit.vim, but only if the user hasn't installed a newer version.
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
 endif
 
 inoremap <C-U> <C-G>u<C-U>
