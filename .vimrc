@@ -139,6 +139,16 @@ au FocusLost * :wa  "save automatically
 
 autocmd QuickFixCmdPost *grep* cwindow
 
+"autoclose parenthesis
+
+ino " ""<left>
+ino ' ''<left>
+ino ( ()<left>
+ino [ []<left>
+ino { {}<left>
+ino {<CR> {<CR>}<ESC>O
+ino {;<CR> {<CR>};<ESC>O
+
 "Sensible.vim - Defaults everyone can agree on
 " Maintainer:   Tim Pope <http://tpo.pe/>
  " Version:      1.1
