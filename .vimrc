@@ -13,13 +13,13 @@ set fileencoding=utf-8  " The encoding written to file.
 if has ("gui_running")
 	execute pathogen#infect()
 	set colorcolumn=80
+    colo molokai
 endif
 
 
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " turn syntax highlighting on
-colo molokai
 set t_Co=256
 syntax on
 
@@ -114,34 +114,32 @@ nnoremap j gj
 nnoremap k gk
 inoremap jj <ESC> 
 
-nnoremap <S-Enter> O<Esc>
-nnoremap <CR> o<Esc>
+nnoremap <S-Enter> o<Esc>
 
 " in diff mode we use the spell check keys for merging
-if &diff
-  ” diff settings
-  map <M-Down> ]c
-  map <M-Up> [c
-  map <M-Left> do
-  map <M-Right> dp
-  map <F9> :new<CR>:read !svn diff<CR>:set syntax=diff buftype=nofile<CR>gg
-else
-  " spell settings
-  :setlocal spell spelllang=en
-  " set the spellfile - folders must exist
-  set spellfile=~/.vim/spellfile.add
-  map <M-Down> ]s
-  map <M-Up> [s
-endif
+"if &diff
+"  ” diff settings
+"  map <Down> ]c
+"  map <Up> [c
+"  map <Left> do
+"  map <Right> dp
+"  map <F9> :new<CR>:read !svn diff<CR>:set syntax=diff buftype=nofile<CR>gg
+"else
+"  " spell settings
+"  :setlocal spell spelllang=en
+"  " set the spellfile - folders must exist
+"  set spellfile=~/.vim/spellfile.add
+"  map <M-Down> ]s
+"  map <M-Up> [s
+"endif
 
 set guifont=Inconsolata\ 13 
 
-
-
 au FocusLost * :wa  "save automatically
 
+autocmd QuickFixCmdPost *grep* cwindow
 
-"nsible.vim - Defaults everyone can agree on
+"Sensible.vim - Defaults everyone can agree on
 " Maintainer:   Tim Pope <http://tpo.pe/>
  " Version:      1.1
 
