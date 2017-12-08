@@ -143,3 +143,13 @@ zc          - close folded text
 :diffupdate - re-scan the files for differences
 
 :copen   to open quickfix
+---------------------------------------------------------------------------
+Registers
+
+:reg     acessregisters
+vimx     open vim with clipboard support!
+Ctrl-f   show command line as a file
+Ctrl-r   acess register from command line (:)
+:redir @<register> 
+:redir OFF
+
