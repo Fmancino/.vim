@@ -3,7 +3,6 @@ set nocompatible
 filetype off
 
 " set UTF-8 encoding
-set enc=utf-8
 set fenc=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8  " The encoding written to file.
@@ -111,12 +110,12 @@ noremap \ .
 "nnoremap <down> <nop>
 "nnoremap <left> <nop>
 "nnoremap <right> <nop>
+"
 "Should be easy to exit insert mode!
-"inoremap <c-e> <c-r>=pumvisible() ? "\<c-e>" : "\<c-o>A"<cr>
-inoremap <expr> <up> pumvisible() ? "\<up>" : "\<ESC>"
-inoremap <expr> <down> pumvisible() ? "\<down>" : "\<ESC>"
-inoremap <left> <ESC>
-inoremap <right> <ESC>
+inoremap <expr> <up> pumvisible() ? "\<up>" : "\<ESC><up>"
+inoremap <expr> <down> pumvisible() ? "\<down>" : "\<ESC><down>"
+inoremap <left> <ESC><left>
+inoremap <right> <ESC><right>
 inoremap jj <ESC>
 inoremap kk <ESC>
 
@@ -136,6 +135,8 @@ nnoremap <Leader>c "+y
 vnoremap <Leader>c "+y
 nnoremap <Leader>v "+p
 vnoremap <Leader>v "+p
+nnoremap <Leader>x "+d
+vnoremap <Leader>x "+d
 
 nnoremap <S-Enter> o<Esc>
 
