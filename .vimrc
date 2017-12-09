@@ -101,18 +101,38 @@ noremap <C-Left>  <C-W>h
 noremap <C-Right>  <C-W>l
 
 
+noremap . :
+noremap \ .
+
+
 "nnoremap <up> <nop>
 "nnoremap <down> <nop>
 "nnoremap <left> <nop>
 "nnoremap <right> <nop>
-"inoremap <up> <nop>
-"inoremap <down> <nop>
-"inoremap <left> <nop>
-"inoremap <right> <nop> optionally make life relly hard and pure!
+"Should be easy to exit insert mode!
+inoremap <up> <ESC>
+inoremap <down> <ESC>
+inoremap <left> <ESC>
+inoremap <right> <ESC> 
+inoremap jj <ESC> 
+inoremap kk <ESC> 
 
 nnoremap j gj
 nnoremap k gk
-inoremap jj <ESC> 
+
+"do not need to press ESC to save and exit from inserto mode
+inoremap :w<CR> <ESC>:w<CR> 
+inoremap :wq<CR> <ESC>:wq<CR> 
+inoremap .w<CR> <ESC>:w<CR> 
+inoremap .wq<CR> <ESC>:wq<CR> 
+inoremap <C-S> <ESC>:w<CR> 
+nnoremap <C-S> :w<CR> 
+
+"Copy paste to clipboard
+nnoremap <Leader>c "+y
+vnoremap <Leader>c "+y
+nnoremap <Leader>v "+p
+vnoremap <Leader>v "+p
 
 nnoremap <S-Enter> o<Esc>
 
