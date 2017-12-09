@@ -142,7 +142,8 @@ zo          - open folded text
 zc          - close folded text  
 :diffupdate - re-scan the files for differences  
 
-:copen   to open quickfix
+### :copen   to open quickfix
+
 ---------------------------------------------------------------------------
 ### Registers
 
