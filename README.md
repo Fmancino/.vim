@@ -20,13 +20,13 @@ copy entire file to clipboard: :%y+
 
 
 ---------------------------------------------------------------------------
-###Explorer, commands:
+### Explorer, commands:
 
 <:Ex :Sex :Vex>		
 <% = new file | R = rename(move) file >  
 
 ---------------------------------------------------------------------------
-###Insert lines:
+### Insert lines:
 <o>	open in new line under  
 <O>	open in new line under  
 
@@ -40,26 +40,26 @@ copy entire file to clipboard: :%y+
 
 
 ---------------------------------------------------------------------------
-###Markings:
+### Markings:
 
 :marks 				to list  
 m <mark> 			to mark  
 ` <mark>			to go to mark  
 
 ---------------------------------------------------------------------------
-###Operator c:
+### Operator c:
 
 c + e 		cancella fino a fine parola e entri in insert  
 c + $ 		cancella fino a fine linea e endtri in insert  
 
 ---------------------------------------------------------------------------
-###Operator d:
+### Operator d:
 
 dd 		cancella lines (e taglia)  
 dw 		cancella parola (e taglia)  
 
 ---------------------------------------------------------------------------
-###Cut/paste and undo redo:
+### Cut/paste and undo redo:
 
 p 		put: incolla  
 "+p 		incolla da copia in altra applicazione  
@@ -71,7 +71,7 @@ u		undo
 ctrl-R		redo  
 
 ---------------------------------------------------------------------------
-###Handling windows:
+### Handling windows:
 
  <ctrl-w> <ctrl-w> 	- change from one window to other  
  :e filename       	- edit another file  
@@ -93,7 +93,7 @@ ctrl-R		redo
 
 
 ---------------------------------------------------------------------------
-###End and beginning of file
+### End and beginning of file
 
 G gg  		go to end or beginning of file  
 <number>G	go to line  
@@ -119,7 +119,7 @@ R 			Replace mode
 :bro[wse] ol[dfiles]	shows a list of recent fies!  
 
 ---------------------------------------------------------------------------
-###To modify many lines:
+### To modify many lines:
 
 Move to the start of the first line in your range  
 (gg for first line, ^ to move to the start).  
@@ -128,7 +128,7 @@ Move down to the last line in your range:
 Ifoo<ESC>     -inserts whith big I just after you hit <ESC>  
 
 ---------------------------------------------------------------------------
-###Vimdiff:
+### Vimdiff:
 
 
 :diffthis  
@@ -144,7 +144,7 @@ zc          - close folded text
 
 :copen   to open quickfix
 ---------------------------------------------------------------------------
-###Registers
+### Registers
 
 :reg     acessregisters  
 vimx     open vim with clipboard support!  
