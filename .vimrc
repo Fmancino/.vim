@@ -7,13 +7,14 @@ set enc=utf-8
 set fenc=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8  " The encoding written to file.
-
 "let g:pathogen_disabled = []
 
 if has ("gui_running")
-	execute pathogen#infect()
-	set colorcolumn=80
+    execute pathogen#infect()
     colo molokai
+    set colorcolumn=80
+    autocmd FileType * unlet! g:airline#extensions#whitespace#checks
+    autocmd FileType markdown let g:airline#extensions#whitespace#checks = [ 'indent' ]
 endif
 
 
@@ -29,7 +30,7 @@ set modelines=0  "security issues
 
 
 ":set mouse=a "be able to use mouse
-:set mouse="" 
+:set mouse=""
 
 set scrolloff=3
 set autoindent
@@ -70,6 +71,7 @@ set showmatch
 set hlsearch
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>p :CtrlP<Enter>
+nnoremap <leader>q :q<Enter>
 nnoremap <Tab> :NERDTree<Enter>
 
 set wrap
@@ -91,7 +93,7 @@ map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 noremap <C-J> <C-W>j<C-W>_
 noremap <C-K> <C-W>k<C-W>_
 nnoremap <S-Up> <C-W>k<C-W>_
-nnoremap <S-Down> <C-W>j<C-W>_ 
+nnoremap <S-Down> <C-W>j<C-W>_
 
 set wmh=0
 
@@ -110,23 +112,24 @@ noremap \ .
 "nnoremap <left> <nop>
 "nnoremap <right> <nop>
 "Should be easy to exit insert mode!
-inoremap <up> <ESC>
-inoremap <down> <ESC>
+"inoremap <c-e> <c-r>=pumvisible() ? "\<c-e>" : "\<c-o>A"<cr>
+inoremap <expr> <up> pumvisible() ? "\<up>" : "\<ESC>"
+inoremap <expr> <down> pumvisible() ? "\<down>" : "\<ESC>"
 inoremap <left> <ESC>
-inoremap <right> <ESC> 
-inoremap jj <ESC> 
-inoremap kk <ESC> 
+inoremap <right> <ESC>
+inoremap jj <ESC>
+inoremap kk <ESC>
 
 nnoremap j gj
 nnoremap k gk
 
 "do not need to press ESC to save and exit from inserto mode
-inoremap :w<CR> <ESC>:w<CR> 
-inoremap :wq<CR> <ESC>:wq<CR> 
-inoremap .w<CR> <ESC>:w<CR> 
-inoremap .wq<CR> <ESC>:wq<CR> 
-inoremap <C-S> <ESC>:w<CR> 
-nnoremap <C-S> :w<CR> 
+inoremap :w <ESC>:w<CR>
+inoremap :wq <ESC>:wq<CR>
+inoremap .w <ESC>:w<CR>
+inoremap .wq <ESC>:wq<CR>
+inoremap <C-S> <ESC>:w<CR>
+nnoremap <C-S> :w<CR>
 
 "Copy paste to clipboard
 nnoremap <Leader>c "+y
@@ -153,7 +156,7 @@ nnoremap <S-Enter> o<Esc>
 "  map <M-Up> [s
 "endif
 
-set guifont=Inconsolata\ 13 
+set guifont=Inconsolata\ 13
 
 au FocusLost * :wa  "save automatically
 
@@ -168,6 +171,11 @@ ino [ []<left>
 ino { {}<left>
 ino {<CR> {<CR>}<ESC>O
 ino {;<CR> {<CR>};<ESC>O
+
+set list          " Display unprintable characters f12 - switches
+set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
+" get rid of trailing whitespaces
+noremap <Leader>t :%s/\s\+$//e<CR>
 
 "Sensible.vim - Defaults everyone can agree on
 " Maintainer:   Tim Pope <http://tpo.pe/>
