@@ -14,6 +14,8 @@ if has ("gui_running")
     set colorcolumn=80
     autocmd FileType * unlet! g:airline#extensions#whitespace#checks
     autocmd FileType markdown let g:airline#extensions#whitespace#checks = [ 'indent' ]
+    let g:ctrlp_max_files=0
+    let g:ctrlp_max_depth=40
 endif
 
 
