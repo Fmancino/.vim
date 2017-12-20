@@ -8,6 +8,8 @@ set termencoding=utf-8
 set fileencoding=utf-8  " The encoding written to file.
 "let g:pathogen_disabled = []
 
+set bg=dark
+
 if has ("gui_running")
     execute pathogen#infect()
     colo molokai
