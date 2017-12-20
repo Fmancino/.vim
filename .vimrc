@@ -18,6 +18,8 @@ if has ("gui_running")
     autocmd FileType markdown let g:airline#extensions#whitespace#checks = [ 'indent' ]
     let g:ctrlp_max_files=0
     let g:ctrlp_max_depth=40
+    set list          " Display unprintable characters f12 - switches
+    set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
 endif
 
 
@@ -177,8 +179,6 @@ ino { {}<left>
 ino {<CR> {<CR>}<ESC>O
 ino {;<CR> {<CR>};<ESC>O
 
-set list          " Display unprintable characters f12 - switches
-set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
 " get rid of trailing whitespaces
 noremap <Leader>t :%s/\s\+$//e<CR>
 
