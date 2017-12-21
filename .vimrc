@@ -9,18 +9,21 @@ set fileencoding=utf-8  " The encoding written to file.
 "let g:pathogen_disabled = []
 
 set bg=dark
+set colorcolumn=80
 
 if has ("gui_running")
     execute pathogen#infect()
     colo gruvbox
     let g:gruvbox_contrast_dark = 'hard'
-    set colorcolumn=80
     autocmd FileType * unlet! g:airline#extensions#whitespace#checks
     autocmd FileType markdown let g:airline#extensions#whitespace#checks = [ 'indent' ]
     let g:ctrlp_max_files=0
     let g:ctrlp_max_depth=40
     set list          " Display unprintable characters f12 - switches
     set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
+    set relativenumber
+else
+    colo molokai
 endif
 
 
@@ -51,7 +54,6 @@ set ttyfast
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
-set relativenumber
 "set undofile
 
 " highlight matching braces
