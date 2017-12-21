@@ -12,7 +12,8 @@ set bg=dark
 
 if has ("gui_running")
     execute pathogen#infect()
-    colo molokai
+    colo gruvbox
+    let g:gruvbox_contrast_dark = 'hard'
     set colorcolumn=80
     autocmd FileType * unlet! g:airline#extensions#whitespace#checks
     autocmd FileType markdown let g:airline#extensions#whitespace#checks = [ 'indent' ]

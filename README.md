@@ -133,7 +133,6 @@ Ifoo<ESC>     -inserts whith big I just after you hit <ESC>
 
 :diffthis  
 :diffoff  
-
 ]c :        - next difference  
 [c :        - previous difference  
 do          - diff obtain  

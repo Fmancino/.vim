@@ -16,3 +16,9 @@
 [submodule "bundle/syntax"]
 	path = bundle/syntax
 	url = https://github.com/octol/vim-cpp-enhanced-highlight.git
+[submodule "/Users/francescomancino/.vim/bundle/gruvbox"]
+	path = /Users/francescomancino/.vim/bundle/gruvbox
+	url = https://github.com/morhetz/gruvbox.git
+[submodule "bundle/vim-colors-solarized"]
+	path = bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
