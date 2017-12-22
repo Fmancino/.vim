@@ -133,6 +133,7 @@ Ifoo<ESC>     -inserts whith big I just after you hit <ESC>
 
 :diffthis  
 :diffoff  
+
 ]c :        - next difference  
 [c :        - previous difference  
 do          - diff obtain  
@@ -153,3 +154,8 @@ Ctrl-r   acess register from command line (:)
 :redir @<register>   
 :redir OFF  
 
+### Finding letter in text
+
+f<letter>       go to letter
+t<letter>       go before letter
+,  ;            navigate back and forward that search

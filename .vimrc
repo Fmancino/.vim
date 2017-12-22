@@ -21,6 +21,7 @@ if has ("gui_running")
     let g:ctrlp_max_depth=40
     set list          " Display unprintable characters f12 - switches
     set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
+    set number
     set relativenumber
 else
     colo molokai
@@ -204,7 +205,6 @@ endif
 
          " Use :help 'option' to see the documentation for the given option.
 
-set autoindent
 set backspace=indent,eol,start
 set complete-=i
 set smarttab
@@ -219,8 +219,6 @@ endif
 set incsearch
 
 set laststatus=2
-set ruler
-set wildmenu
 
 if !&scrolloff
   set scrolloff=1
