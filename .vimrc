@@ -14,7 +14,7 @@ set colorcolumn=80
 if has ("gui_running")
     execute pathogen#infect()
     colo molokai
-   "" let g:gruvbox_contrast_dark = 'hard'
+""    let g:gruvbox_contrast_dark = 'hard'
     autocmd FileType * unlet! g:airline#extensions#whitespace#checks
     autocmd FileType markdown let g:airline#extensions#whitespace#checks = [ 'indent' ]
     let g:ctrlp_max_files=0
@@ -42,12 +42,26 @@ set modelines=0  "security issues
 :set mouse=a "be able to use mouse
 :set mouse=""
 
+" FINDING FILES:
+
+" Search down into subfolders
+" Provides tab-completion for all file-related tasks
+set path+=**
+
+" Display all matching files when we tab complete
+set wildmenu
+
+" NOW WE CAN:
+" - Hit tab to :find by partial match
+" - Use * to make it fuzzy
+
+" THINGS TO CONSIDER:
+" - :b lets you autocomplete any open buffer
 set scrolloff=3
 set autoindent
 set showmode
 set showcmd
 set hidden
-set wildmenu
 set wildmode=list:longest
 set visualbell
 set cursorline
@@ -79,8 +93,9 @@ let mapleader = "," "the <leader> map
 set showmatch
 set hlsearch
 nnoremap <leader><space> :noh<cr>
-nnoremap <leader>p :CtrlP<Enter>
+""nnoremap <leader>p :CtrlP<Enter>
 nnoremap <leader>q :q<Enter>
+nnoremap <leader>f :find *
 nnoremap <Tab> :NERDTree<Enter>
 nnoremap <leader><Tab> :NERDTreeClose<Enter>
 
