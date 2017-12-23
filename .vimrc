@@ -13,20 +13,20 @@ set colorcolumn=80
 
 if has ("gui_running")
     execute pathogen#infect()
-    colo gruvbox
-    let g:gruvbox_contrast_dark = 'hard'
+    colo molokai
+   "" let g:gruvbox_contrast_dark = 'hard'
     autocmd FileType * unlet! g:airline#extensions#whitespace#checks
     autocmd FileType markdown let g:airline#extensions#whitespace#checks = [ 'indent' ]
     let g:ctrlp_max_files=0
     let g:ctrlp_max_depth=40
     set list          " Display unprintable characters f12 - switches
     set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
-    set number
-    set relativenumber
 else
     colo molokai
 endif
 
+set number
+set relativenumber
 
 let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
@@ -39,7 +39,7 @@ filetype plugin indent on
 set modelines=0  "security issues
 
 
-":set mouse=a "be able to use mouse
+:set mouse=a "be able to use mouse
 :set mouse=""
 
 set scrolloff=3
@@ -82,6 +82,7 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <leader>p :CtrlP<Enter>
 nnoremap <leader>q :q<Enter>
 nnoremap <Tab> :NERDTree<Enter>
+nnoremap <leader><Tab> :NERDTreeClose<Enter>
 
 set wrap
 set textwidth=79
@@ -111,6 +112,8 @@ noremap <C-Up>  <C-W>k
 noremap <C-Left>  <C-W>h
 noremap <C-Right>  <C-W>l
 
+noremap <C-E>  4<C-E>
+noremap <C-Y>  4<C-Y>
 
 noremap . :
 noremap \ .
