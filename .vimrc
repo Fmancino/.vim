@@ -57,6 +57,21 @@ set wildmenu
 
 " THINGS TO CONSIDER:
 " - :b lets you autocomplete any open buffer
+
+" TAG JUMPING:
+
+" Create the `tags` file (may need to install ctags first)
+""command! MakeTags !ctags -R .
+:set tags=.git/tags
+" NOW WE CAN:
+" - Use ^] to jump to tag under cursor
+" - Use g^] for ambiguous tags
+" - Use ^t to jump back up the tag stack
+
+" THINGS TO CONSIDER:
+" - This doesn't help if you want a visual list of tags
+
+
 set scrolloff=3
 set autoindent
 set showmode
@@ -96,8 +111,11 @@ nnoremap <leader><space> :noh<cr>
 ""nnoremap <leader>p :CtrlP<Enter>
 nnoremap <leader>q :q<Enter>
 nnoremap <leader>f :find *
+nnoremap <leader>e :Ex<Enter>
 nnoremap <Tab> :NERDTree<Enter>
 nnoremap <leader><Tab> :NERDTreeClose<Enter>
+inoremap <leader><Tab> <Tab>
+inoremap <Tab> <C-N>
 
 set wrap
 set textwidth=79
@@ -130,10 +148,6 @@ noremap <C-Right>  <C-W>l
 noremap <C-E>  4<C-E>
 noremap <C-Y>  4<C-Y>
 
-noremap . :
-noremap \ .
-
-
 "nnoremap <up> <nop>
 "nnoremap <down> <nop>
 "nnoremap <left> <nop>
@@ -147,16 +161,13 @@ inoremap <right> <ESC><right>
 inoremap jj <ESC>
 inoremap kk <ESC>
 
-nnoremap j gj
-nnoremap k gk
-
 "do not need to press ESC to save and exit from inserto mode
-inoremap :w <ESC>:w<CR>
+noremap <leader>q <ESC>:wq<CR>
 inoremap :wq <ESC>:wq<CR>
-inoremap .w <ESC>:w<CR>
-inoremap .wq <ESC>:wq<CR>
 inoremap <C-S> <ESC>:w<CR>
 nnoremap <C-S> :w<CR>
+inoremap <leader>z <ESC>:wq<CR>
+nnoremap <leader>z :wq<CR>
 
 "Copy paste to clipboard
 nnoremap <Leader>c "+y
@@ -204,6 +215,14 @@ ino {;<CR> {<CR>};<ESC>O
 " get rid of trailing whitespaces
 noremap <Leader>t :%s/\s\+$//e<CR>
 
+autocmd bufnewfile *.sh so ~/.vim/templates/bash_header.txt
+autocmd bufnewfile *.sh exe "1," . 10 . "g/FILENAME:.*/s//FILENAME: " .expand("%")
+autocmd bufnewfile *.sh exe "1," . 10 . "g/CREATION DATE:.*/s//CREATION DATE: " .strftime("%d-%m-%Y")
+autocmd bufnewfile *.sh :normal G
+autocmd Bufwritepre,filewritepre *.sh execute "normal ma"
+
+autocmd Bufwritepre,filewritepre *.sh exe "1," . 10 . "g/LAST MODIFIED:.*/s/LAST MODIFIED:.*/LAST MODIFIED: " .strftime("%c")
+autocmd bufwritepost,filewritepost *.sh execute "normal `a"
 "Sensible.vim - Defaults everyone can agree on
 " Maintainer:   Tim Pope <http://tpo.pe/>
  " Version:      1.1
