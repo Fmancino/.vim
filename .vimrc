@@ -121,7 +121,7 @@ nnor <leader>cf :let @*=expand("%:p")<CR>    " Mnemonic: Copy File path
 nnor <leader>yf :let @"=expand("%:p")<CR>    " Mnemonic: Yank File path
 nnor <leader>fn :let @"=expand("%")<CR>      " Mnemonic: yank File Name
 
-inor <C-D> <ESC>lxa
+inor <C-D> <Right><Backspace>
 
 set wrap
 set textwidth=79
@@ -139,41 +139,40 @@ map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
 "mappping moving trought windows in vertical fashion, maximixing the window
 "you are on
-noremap <C-J> <C-W>j<C-W>_
-noremap <C-K> <C-W>k<C-W>_
-nnoremap <S-Up> <C-W>k<C-W>_
-nnoremap <S-Down> <C-W>j<C-W>_
+noremap <C-J> <C-W>j
+noremap <C-K> <C-W>k
+noremap <C-H>  <C-W>h
+noremap <C-L>  <C-W>l
 
 set wmh=0
 
-noremap <C-Down>  <C-W>j
-noremap <C-Up>  <C-W>k
-noremap <C-Left>  <C-W>h
-noremap <C-Right>  <C-W>l
+"noremap <C-Down>  <C-W>j
+"noremap <C-Up>  <C-W>k
+"noremap <C-Left>  <C-W>h
+"noremap <C-Right>  <C-W>l
 
 noremap <C-E>  4<C-E>
 noremap <C-Y>  4<C-Y>
 
-"nnoremap <up> <nop>
-"nnoremap <down> <nop>
-"nnoremap <left> <nop>
-"nnoremap <right> <nop>
-"
-"Should be easy to exit insert mode!
-inoremap <expr> <up> pumvisible() ? "\<up>" : "\<ESC><up>"
-inoremap <expr> <down> pumvisible() ? "\<down>" : "\<ESC><down>"
-inoremap <left> <ESC><left>
-inoremap <right> <ESC><right>
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+
+" Should be easy to exit insert mode!
+" inoremap <expr> <up> pumvisible() ? "\<up>" : "\<ESC><up>"
+" inoremap <expr> <down> pumvisible() ? "\<down>" : "\<ESC><down>"
+" inoremap <left> <ESC><left>
+" inoremap <right> <ESC><right>
 inoremap jj <ESC>
 inoremap kk <ESC>
 
-"do not need to press ESC to save and exit from inserto mode
+"do not need to press ESC to save and exit from insert mode
 noremap <leader>q <ESC>:wq<CR>
 inoremap :wq <ESC>:wq<CR>
+inoremap ZZ <ESC>:wq<CR>
 inoremap <C-S> <ESC>:w<CR>
 nnoremap <C-S> :w<CR>
-inoremap <leader>z <ESC>:wq<CR>
-nnoremap <leader>z :wq<CR>
 
 "Copy paste to clipboard
 nnoremap <Leader>c "+y
@@ -217,6 +216,12 @@ ino [ []<left>
 ino { {}<left>
 ino {<CR> {<CR>}<ESC>O
 ino {;<CR> {<CR>};<ESC>O
+
+ino <leader>" "
+ino <leader>' '
+ino <leader>( (
+ino <leader>[ [
+ino <leader>{ {
 
 " get rid of trailing whitespaces
 noremap <Leader>t :%s/\s\+$//e<CR>
