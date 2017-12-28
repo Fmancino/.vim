@@ -117,6 +117,12 @@ nnoremap <leader><Tab> :NERDTreeClose<Enter>
 inoremap <leader><Tab> <Tab>
 inoremap <Tab> <C-N>
 
+nnor <leader>cf :let @*=expand("%:p")<CR>    " Mnemonic: Copy File path
+nnor <leader>yf :let @"=expand("%:p")<CR>    " Mnemonic: Yank File path
+nnor <leader>fn :let @"=expand("%")<CR>      " Mnemonic: yank File Name
+
+inor <C-D> <ESC>lxa
+
 set wrap
 set textwidth=79
 set formatoptions=qrn1
