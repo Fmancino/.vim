@@ -195,7 +195,6 @@ inoremap <C-S> <ESC>:w<CR>
 nnoremap <C-S> :w<CR>
 
 "Copy paste to clipboard
-nnoremap <Leader>c "+y
 vnoremap <Leader>c "+y
 nnoremap <Leader>v o<ESC>"+p
 inoremap <Leader>v <ESC>"+p
@@ -204,6 +203,17 @@ nnoremap <Leader>x "+d
 vnoremap <Leader>x "+d
 
 nnoremap <S-Enter> o<Esc>
+
+" Import some emacs in the command mode:
+cnoremap <C-a>  <Home>
+cnoremap <C-b>  <Left>
+cnoremap <C-f>  <Right>
+cnoremap <C-p>  <Up>
+cnoremap <C-n>  <Down>
+cnoremap <C-d>  <Delete>
+cnoremap <Esc>b <S-Left>
+cnoremap <Esc>f <S-Right>
+cnoremap <Esc>d <S-right><C-w>
 
 " in diff mode we use the spell check keys for merging
 "if &diff
