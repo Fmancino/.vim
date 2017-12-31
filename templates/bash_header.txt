@@ -1,0 +1,14 @@
+:insert
+#!/usr/bin/env bash
+#-------------------------------------------------------------------------
+#FILENAME:
+
+#PURPOSE:
+
+#CREATION DATE:
+
+#LAST MODIFIED:
+
+#AUTHOR: Francesco Mancino, francescoman@protonmail.com
+#-------------------------------------------------------------------------
+.
