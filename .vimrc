@@ -154,10 +154,27 @@ set wmh=0
 noremap <C-E>  4<C-E>
 noremap <C-Y>  4<C-Y>
 
+"Set hardmode"
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+" Add emacs style bindings:
+inoremap <C-A> <Home>
+inoremap <C-B> <Left>
+inoremap <C-E> <End>
+inoremap <C-F> <Right>
+inoremap <C-P> <Up>
+inoremap <C-N> <Down>
+" "inoremap <C-K> <Esc>lDa
+" "inoremap <C-U> <Esc>d0xi
+" "inoremap <C-Y> <Esc>Pa
+" "inoremap <C-X><C-S> <Esc>:w<CR>a
 
 " Should be easy to exit insert mode!
 " inoremap <expr> <up> pumvisible() ? "\<up>" : "\<ESC><up>"
@@ -177,7 +194,8 @@ nnoremap <C-S> :w<CR>
 "Copy paste to clipboard
 nnoremap <Leader>c "+y
 vnoremap <Leader>c "+y
-nnoremap <Leader>v "+p
+nnoremap <Leader>v o<ESC>"+p
+inoremap <Leader>v <ESC>"+p
 vnoremap <Leader>v "+p
 nnoremap <Leader>x "+d
 vnoremap <Leader>x "+d
@@ -234,6 +252,11 @@ autocmd Bufwritepre,filewritepre *.sh execute "normal ma"
 
 autocmd Bufwritepre,filewritepre *.sh exe "1," . 10 . "g/LAST MODIFIED:.*/s/LAST MODIFIED:.*/LAST MODIFIED: " .strftime("%c")
 autocmd bufwritepost,filewritepost *.sh execute "normal `a"
+
+autocmd bufnewfile *.py so ~/.vim/templates/python3_header.txt
+
+
+
 "Sensible.vim - Defaults everyone can agree on
 " Maintainer:   Tim Pope <http://tpo.pe/>
  " Version:      1.1
