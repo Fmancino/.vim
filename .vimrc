@@ -39,8 +39,11 @@ filetype plugin indent on
 set modelines=0  "security issues
 
 
-:set mouse=a "be able to use mouse
-:set mouse=""
+set mouse=a "be able to use mouse
+" :set mouse=""
+
+" access the system clipboard as standard (*)
+set clipboard=unnamed
 
 " FINDING FILES:
 
