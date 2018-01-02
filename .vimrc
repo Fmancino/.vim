@@ -120,9 +120,9 @@ nnoremap <leader><Tab> :NERDTreeClose<Enter>
 inoremap <leader><Tab> <Tab>
 inoremap <Tab> <C-N>
 
-nnor <leader>cf :let @*=expand("%:p")<CR>    " Mnemonic: Copy File path
-nnor <leader>yf :let @"=expand("%:p")<CR>    " Mnemonic: Yank File path
-nnor <leader>fn :let @"=expand("%")<CR>      " Mnemonic: yank File Name
+nnoremap <leader>cf :let @*=expand("%:p")<CR>    " Mnemonic: Copy File path
+nnoremap <leader>yf :let @"=expand("%:p")<CR>    " Mnemonic: Yank File path
+nnoremap <leader>fn :let @"=expand("%")<CR>      " Mnemonic: yank File Name
 
 inor <C-D> <Right><Backspace>
 
