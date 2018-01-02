@@ -10,9 +10,9 @@ set fileencoding=utf-8  " The encoding written to file.
 
 set bg=dark
 set colorcolumn=80
+execute pathogen#infect()
 
 if has ("gui_running")
-    execute pathogen#infect()
     colo molokai
 ""    let g:gruvbox_contrast_dark = 'hard'
     autocmd FileType * unlet! g:airline#extensions#whitespace#checks
