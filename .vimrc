@@ -43,7 +43,7 @@ set mouse=a "be able to use mouse
 " :set mouse=""
 
 " access the system clipboard as standard (*)
-set clipboard=unnamed
+set clipboard^=unnamed
 
 " FINDING FILES:
 
