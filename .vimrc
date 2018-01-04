@@ -7,14 +7,36 @@ set fenc=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8 " The encoding written to file.
 
-let virginVim = 0 " 0 == false, 1 == true
+let plugins = 1 " 0 == false, 1 == true
+let badTerminal = 0 " 0 == false, 1 == true
 
-" if has ("gui_running")
-" " let g:pathogen_disabled = []
-" else
-" endif
+let g:pathogen_disabled = []
+call add(g:pathogen_disabled, 'YouCompleteMe')
+if has ("gui_running")
+    call add(g:pathogen_disabled, 'vim-tmux-navigator')
+endif
 
-if virginVim == 0
+" Operating systems: macunix unix win32 win32unix
+if has('macunix')
+    " access the system clipboard as standard (*)
+    set clipboard^=unnamed
+else
+    " access the system clipboard as standard (+)
+    set clipboard=unnamedplus
+endif
+
+if badTerminal == 0
+    set list          " Display unprintable characters f12 - switches
+    set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
+    colo molokai
+    set colorcolumn=80
+    set mouse=a "be able to use mouse
+else
+    let plugins = 0 " 0 == false, 1 == true
+    set bg=dark
+endif
+
+if plugins == 1
     execute pathogen#infect()
 
     " Add spaces after comment delimiters by default
@@ -24,18 +46,11 @@ if virginVim == 0
     autocmd FileType markdown let g:airline#extensions#whitespace#checks = [ 'indent' ]
     let g:ctrlp_max_files=0
     let g:ctrlp_max_depth=40
-    set list          " Display unprintable characters f12 - switches
-    set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
+    let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 endif
 
-
-set bg=dark
-set colorcolumn=80
-colo molokai
 set number
 set relativenumber
-
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 
 " turn syntax highlighting on
 set t_Co=256
@@ -45,12 +60,7 @@ filetype plugin indent on
 
 set modelines=0  "security issues
 
-
-set mouse=a "be able to use mouse
 " :set mouse=""
-
-" access the system clipboard as standard (*)
-set clipboard^=unnamed
 
 " FINDING FILES:
 
@@ -209,6 +219,9 @@ vnoremap <Leader>v "+p
 nnoremap <Leader>x "+d
 vnoremap <Leader>x "+d
 
+" Skip pressing o end esc all the time i need a space
+nnoremap <Leader>O O<Esc>xxxj
+nnoremap <Leader>o o<Esc>xxx
 nnoremap <S-Enter> o<Esc>
 
 " Import some emacs in the command mode:
