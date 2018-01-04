@@ -5,26 +5,33 @@ filetype off
 " set UTF-8 encoding
 set fenc=utf-8
 set termencoding=utf-8
-set fileencoding=utf-8  " The encoding written to file.
-"let g:pathogen_disabled = []
+set fileencoding=utf-8 " The encoding written to file.
 
-set bg=dark
-set colorcolumn=80
-execute pathogen#infect()
+let virginVim = 0 " 0 == false, 1 == true
 
-if has ("gui_running")
-    colo molokai
-""    let g:gruvbox_contrast_dark = 'hard'
+" if has ("gui_running")
+" " let g:pathogen_disabled = []
+" else
+" endif
+
+if virginVim == 0
+    execute pathogen#infect()
+
+    " Add spaces after comment delimiters by default
+    let g:NERDSpaceDelims = 1
+
     autocmd FileType * unlet! g:airline#extensions#whitespace#checks
     autocmd FileType markdown let g:airline#extensions#whitespace#checks = [ 'indent' ]
     let g:ctrlp_max_files=0
     let g:ctrlp_max_depth=40
     set list          " Display unprintable characters f12 - switches
     set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
-else
-    colo molokai
 endif
 
+
+set bg=dark
+set colorcolumn=80
+colo molokai
 set number
 set relativenumber
 
@@ -195,7 +202,7 @@ inoremap <C-S> <ESC>:w<CR>
 nnoremap <C-S> :w<CR>
 
 "Copy paste to clipboard
-vnoremap <Leader>c "+y
+vnoremap <Leader>y "+y
 nnoremap <Leader>v o<ESC>"+p
 inoremap <Leader>v <ESC>"+p
 vnoremap <Leader>v "+p
