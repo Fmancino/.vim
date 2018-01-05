@@ -204,6 +204,48 @@ inoremap <C-N> <Down>
 inoremap jj <ESC>
 inoremap kk <ESC>
 
+" Do not like swedish keyboard for $
+nnoremap € $
+nnoremap å [
+nnoremap ¨ ]
+nnoremap ä }
+nnoremap ö {
+inoremap € $
+inoremap å []<left>
+inoremap åå [
+inoremap ¨ ]
+inoremap ä }
+inoremap ö {
+inoremap ö {}<left>
+inoremap ö<CR> {<CR>}<ESC>O
+inoremap öö {
+vnoremap € $
+vnoremap å [
+vnoremap ¨ ]
+vnoremap ä }
+vnoremap ö {
+inoremap ,å å
+inoremap ,¨ ¨
+inoremap ,ä ä
+inoremap ,ö ö
+
+"autoclose parenthesis
+ino " ""<left>
+ino ' ''<left>
+ino ( ()<left>
+ino (( (
+ino [ []<left>
+ino [[ [
+ino { {}<left>
+ino {{ {
+ino {<CR> {<CR>}<ESC>O
+ino {;<CR> {<CR>};<ESC>O
+ino <leader>" "
+ino <leader>' '
+ino <leader>( (
+ino <leader>[ [
+ino <leader>{ {
+
 "do not need to press ESC to save and exit from insert mode
 noremap <leader>q <ESC>:wq<CR>
 inoremap :wq <ESC>:wq<CR>
@@ -257,22 +299,6 @@ set guifont=Inconsolata\ 13
 au FocusLost * :wa  "save automatically
 
 autocmd QuickFixCmdPost *grep* cwindow
-
-"autoclose parenthesis
-
-ino " ""<left>
-ino ' ''<left>
-ino ( ()<left>
-ino [ []<left>
-ino { {}<left>
-ino {<CR> {<CR>}<ESC>O
-ino {;<CR> {<CR>};<ESC>O
-
-ino <leader>" "
-ino <leader>' '
-ino <leader>( (
-ino <leader>[ [
-ino <leader>{ {
 
 " get rid of trailing whitespaces
 noremap <Leader>t :%s/\s\+$//e<CR>
