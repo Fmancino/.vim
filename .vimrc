@@ -7,6 +7,7 @@ set fenc=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8 " The encoding written to file.
 
+let mapleader = "," "the <leader> map
 let plugins = 1 " 0 == false, 1 == true
 let badTerminal = 0 " 0 == false, 1 == true
 
@@ -47,6 +48,9 @@ if plugins == 1
     let g:ctrlp_max_files=0
     let g:ctrlp_max_depth=40
     let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+    nnoremap <leader>gy :Ggrep "<C-R>""
+    nnoremap <leader>gv y:Ggrep "<C-R>""
+    nnoremap <leader>gr :Ggrep ""<left>
 endif
 
 set number
@@ -121,9 +125,6 @@ set smartcase
 set tabstop=4        " tab width is 4 spaces
 set shiftwidth=4     " indent also with 4 spaces
 set expandtab        " expand tabs to spaces
-
-let mapleader = "," "the <leader> map
-
 
 set showmatch
 set hlsearch
@@ -231,6 +232,10 @@ inoremap ,å å
 inoremap ,¨ ¨
 inoremap ,ä ä
 inoremap ,ö ö
+nnoremap œ <C-o> " Go back with alt-o on swedish keyboard
+
+" Search selected text
+vnoremap <expr> // 'y/\V'.escape(@",'\').'<CR>'
 
 "autoclose parenthesis
 ino " ""<left>
@@ -260,6 +265,7 @@ nnoremap <C-S> :w<CR>
 vnoremap <Leader>y "+y
 nnoremap <Leader>v o<ESC>"+p
 inoremap <Leader>v <ESC>"+p
+cnoremap <Leader>v <C-R>+
 vnoremap <Leader>v "+p
 nnoremap <Leader>x "+d
 vnoremap <Leader>x "+d
