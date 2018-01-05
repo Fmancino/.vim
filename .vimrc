@@ -206,11 +206,13 @@ inoremap kk <ESC>
 
 " Do not like swedish keyboard for $
 nnoremap € $
+nnoremap ¤ $
 nnoremap å [
 nnoremap ¨ ]
 nnoremap ä }
 nnoremap ö {
 inoremap € $
+inoremap ¤ $
 inoremap å []<left>
 inoremap åå [
 inoremap ¨ ]
@@ -220,6 +222,7 @@ inoremap ö {}<left>
 inoremap ö<CR> {<CR>}<ESC>O
 inoremap öö {
 vnoremap € $
+vnoremap ¤ $
 vnoremap å [
 vnoremap ¨ ]
 vnoremap ä }
