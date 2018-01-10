@@ -133,9 +133,8 @@ nnoremap <leader><space> :noh<cr>
 nnoremap <leader>q :q<Enter>
 nnoremap <leader>f :find *
 nnoremap <leader>e :Ex<Enter>
-nnoremap <Tab> :NERDTree<Enter>
-nnoremap <leader><Tab> :NERDTreeClose<Enter>
-inoremap <leader><Tab> <Tab>
+nnoremap <leader>n :NERDTree<Enter>
+nnoremap <leader>N :NERDTreeClose<Enter>
 inoremap <Tab> <C-N>
 
 nnoremap <leader>cf :let @*=expand("%:p")<CR>    " Mnemonic: Copy File path
