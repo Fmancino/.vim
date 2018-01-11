@@ -9,7 +9,7 @@ set fileencoding=utf-8 " The encoding written to file.
 
 let mapleader = "," "the <leader> map
 let plugins = 1 " 0 == false, 1 == true
-let badTerminal = 0 " 0 == false, 1 == true
+let badTerminal = 1 " 0 == false, 1 == true
 
 let g:pathogen_disabled = []
 call add(g:pathogen_disabled, 'YouCompleteMe')
@@ -29,13 +29,20 @@ endif
 if badTerminal == 0
     set list          " Display unprintable characters f12 - switches
     set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
-    colo molokai
-    set colorcolumn=80
     set mouse=a "be able to use mouse
 else
-    let plugins = 0 " 0 == false, 1 == true
-    set bg=dark
+    if has ("gui_running")
+    else
+        let plugins = 0 " 0 == false, 1 == true
+        set bg=dark
+    endif
 endif
+
+colo molokai
+set colorcolumn=80
+
+" Set spelling on git commits
+autocmd FileType gitcommit setlocal spell
 
 if plugins == 1
     execute pathogen#infect()
