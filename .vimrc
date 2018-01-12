@@ -9,12 +9,19 @@ set fileencoding=utf-8 " The encoding written to file.
 
 let mapleader = "," "the <leader> map
 let plugins = 1 " 0 == false, 1 == true
-let badTerminal = 1 " 0 == false, 1 == true
+let badTerminal = 0 " 0 == false, 1 == true
 
 let g:pathogen_disabled = []
 call add(g:pathogen_disabled, 'YouCompleteMe')
 if has ("gui_running")
     call add(g:pathogen_disabled, 'vim-tmux-navigator')
+else
+"    call add(g:pathogen_disabled, 'ctrlp')
+"    call add(g:pathogen_disabled, 'ctrlp-py-matcher')
+    call add(g:pathogen_disabled, 'nerdtree')
+    call add(g:pathogen_disabled, 'vim-airline')
+    call add(g:pathogen_disabled, 'syntastic')
+    call add(g:pathogen_disabled, 'syntax')
 endif
 
 " Operating systems: macunix unix win32 win32unix
@@ -29,7 +36,6 @@ endif
 if badTerminal == 0
     set list          " Display unprintable characters f12 - switches
     set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
-    set mouse=a "be able to use mouse
 else
     if has ("gui_running")
     else
@@ -38,6 +44,7 @@ else
     endif
 endif
 
+set mouse=a "be able to use mouse
 colo molokai
 set colorcolumn=80
 
