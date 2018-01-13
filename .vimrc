@@ -21,7 +21,6 @@ else
     call add(g:pathogen_disabled, 'nerdtree')
     call add(g:pathogen_disabled, 'vim-airline')
     call add(g:pathogen_disabled, 'syntastic')
-    call add(g:pathogen_disabled, 'syntax')
 endif
 
 " Operating systems: macunix unix win32 win32unix
@@ -45,7 +44,7 @@ else
 endif
 
 set mouse=a "be able to use mouse
-colo molokai
+colo mymolo
 set colorcolumn=80
 
 " Set spelling on git commits
