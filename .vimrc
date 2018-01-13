@@ -121,7 +121,10 @@ set ttyfast
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
-"set undofile
+set undofile
+
+" set a directory to store the undo history
+set undodir=~/.vimundo/
 
 " highlight matching braces
 set showmatch
@@ -142,7 +145,6 @@ set expandtab        " expand tabs to spaces
 set showmatch
 set hlsearch
 nnoremap <leader><space> :noh<cr>
-""nnoremap <leader>p :CtrlP<Enter>
 nnoremap <leader>q :q<Enter>
 nnoremap <leader>f :find *
 nnoremap <leader>e :Ex<Enter>
@@ -150,11 +152,16 @@ nnoremap <leader>n :NERDTree<Enter>
 nnoremap <leader>N :NERDTreeClose<Enter>
 inoremap <Tab> <C-N>
 
-nnoremap <leader>cf :let @*=expand("%:p")<CR>    " Mnemonic: Copy File path
+nnoremap <leader>cf :let @+=expand("%:p")<CR>    " Mnemonic: Copy File path
 nnoremap <leader>yf :let @"=expand("%:p")<CR>    " Mnemonic: Yank File path
 nnoremap <leader>fn :let @"=expand("%")<CR>      " Mnemonic: yank File Name
 
 inor <C-D> <Right><Backspace>
+
+" delete for real:
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+vnoremap <leader>p "_dP
 
 set wrap
 set textwidth=79
