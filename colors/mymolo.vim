@@ -200,6 +200,7 @@ if &t_Co > 255
    hi SpecialComment  ctermfg=245               cterm=bold
    hi Special         ctermfg=81
    if has("spell")
+       hi clear SpellBad
        hi SpellBad cterm=underline
        hi SpellCap                ctermbg=17
        hi SpellLocal              ctermbg=17
