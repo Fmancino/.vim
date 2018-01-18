@@ -32,6 +32,10 @@ else
     set clipboard=unnamedplus
 endif
 
+if has('nvim')
+  let $VISUAL = 'nvr -cc split --remote-wait'
+endif
+
 if badTerminal == 0
     set list          " Display unprintable characters f12 - switches
     set listchars=tab:•\ ,trail:•,extends:»,precedes:« " Unprintable chars mapping
