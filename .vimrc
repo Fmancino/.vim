@@ -20,7 +20,6 @@ else
 "    call add(g:pathogen_disabled, 'ctrlp-py-matcher')
     call add(g:pathogen_disabled, 'nerdtree')
     call add(g:pathogen_disabled, 'vim-airline')
-    call add(g:pathogen_disabled, 'syntastic')
 endif
 
 " Operating systems: macunix unix win32 win32unix
@@ -126,6 +125,7 @@ set ruler
 set backspace=indent,eol,start
 set laststatus=2
 set undofile
+set spell
 
 " set a directory to store the undo history
 set undodir=~/.vimundo/
@@ -162,10 +162,8 @@ nnoremap <leader>fn :let @"=expand("%")<CR>      " Mnemonic: yank File Name
 
 inor <C-D> <Right><Backspace>
 
-" delete for real:
-nnoremap <leader>d "_d
-vnoremap <leader>d "_d
-vnoremap <leader>p "_dP
+" Go to function start
+nnoremap <leader>s ?^\S<Enter>:noh<Enter>
 
 set wrap
 set textwidth=79
@@ -199,14 +197,14 @@ noremap <C-E>  4<C-E>
 noremap <C-Y>  4<C-Y>
 
 "Set hardmode"
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
+" nnoremap <up> <nop>
+" nnoremap <down> <nop>
+" nnoremap <left> <nop>
+" nnoremap <right> <nop>
+" inoremap <up> <nop>
+" inoremap <down> <nop>
+" inoremap <left> <nop>
+" inoremap <right> <nop>
 
 " Add emacs style bindings:
 inoremap <C-A> <Home>
