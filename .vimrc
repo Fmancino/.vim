@@ -67,6 +67,10 @@ if plugins == 1
     nnoremap <leader>gy :Ggrep "<C-R>""
     nnoremap <leader>gv y:Ggrep "<C-R>""
     nnoremap <leader>gr :Ggrep ""<left>
+    let g:syntastic_cpp_checkers = ['gcc']
+    let g:syntastic_cpp_check_header = 1
+    let g:syntastic_cpp_include_dirs = [ '../inc', '../if', 'inc', 'if' ]
+    let g:syntastic_cpp_auto_refresh_includes = 1
 endif
 
 set number
@@ -188,10 +192,10 @@ noremap <C-L>  <C-W>l
 
 set wmh=0
 
-"noremap <C-Down>  <C-W>j
-"noremap <C-Up>  <C-W>k
-"noremap <C-Left>  <C-W>h
-"noremap <C-Right>  <C-W>l
+noremap <C-Down>  <C-W>j
+noremap <C-Up>  <C-W>k
+noremap <C-Left>  <C-W>h
+noremap <C-Right>  <C-W>l
 
 noremap <C-E>  4<C-E>
 noremap <C-Y>  4<C-Y>
@@ -219,10 +223,10 @@ inoremap <C-N> <Down>
 " "inoremap <C-X><C-S> <Esc>:w<CR>a
 
 " Should be easy to exit insert mode!
-" inoremap <expr> <up> pumvisible() ? "\<up>" : "\<ESC><up>"
-" inoremap <expr> <down> pumvisible() ? "\<down>" : "\<ESC><down>"
-" inoremap <left> <ESC><left>
-" inoremap <right> <ESC><right>
+inoremap <expr> <up> pumvisible() ? "\<up>" : "\<ESC><up>"
+inoremap <expr> <down> pumvisible() ? "\<down>" : "\<ESC><down>"
+inoremap <left> <ESC><left>
+inoremap <right> <ESC><right>
 inoremap jj <ESC>
 inoremap kk <ESC>
 
@@ -235,14 +239,11 @@ nnoremap ä }
 nnoremap ö {
 inoremap € $
 inoremap ¤ $
-inoremap å []<left>
-inoremap åå [
 inoremap ¨ ]
 inoremap ä }
 inoremap ö {
 inoremap ö {}<left>
 inoremap ö<CR> {<CR>}<ESC>O
-inoremap öö {
 vnoremap € $
 vnoremap ¤ $
 vnoremap å [
@@ -259,21 +260,8 @@ nnoremap œ <C-o> " Go back with alt-o on swedish keyboard
 vnoremap <expr> // 'y/\V'.escape(@",'\').'<CR>'
 
 "autoclose parenthesis
-ino " ""<left>
-ino ' ''<left>
-ino ( ()<left>
-ino (( (
-ino [ []<left>
-ino [[ [
-ino { {}<left>
-ino {{ {
-ino {<CR> {<CR>}<ESC>O
-ino {;<CR> {<CR>};<ESC>O
-ino <leader>" "
-ino <leader>' '
-ino <leader>( (
-ino <leader>[ [
-ino <leader>{ {
+ino < <><left>
+ino << <<
 
 "do not need to press ESC to save and exit from insert mode
 noremap <leader>q <ESC>:wq<CR>
@@ -290,6 +278,11 @@ cnoremap <Leader>v <C-R>+
 vnoremap <Leader>v "+p
 nnoremap <Leader>x "+d
 vnoremap <Leader>x "+d
+
+" Add a ; in the end of line
+nnoremap <Leader>; $a;<ESC>
+inoremap <Leader>; <ESC>$a;<ESC>
+
 
 " Skip pressing o end esc all the time i need a space
 nnoremap <Leader>O O<Esc>xxxj
@@ -326,8 +319,6 @@ cnoremap <Esc>d <S-right><C-w>
 
 set guifont=Inconsolata\ 13
 
-au FocusLost * :wa  "save automatically
-
 autocmd QuickFixCmdPost *grep* cwindow
 
 " get rid of trailing whitespaces
@@ -348,22 +339,22 @@ autocmd bufnewfile *.py so ~/.vim/templates/python3_header.txt
 
 "Sensible.vim - Defaults everyone can agree on
 " Maintainer:   Tim Pope <http://tpo.pe/>
- " Version:      1.1
+" Version:      1.1
 
 if exists('g:loaded_sensible') || &compatible
-   finish
+finish
 else
-	let g:loaded_sensible = 'yes'
+let g:loaded_sensible = 'yes'
 endif
 
 if has('autocmd')
-  filetype plugin indent on
-  endif
-  if has('syntax') && !exists('g:syntax_on')
-   syntax enable
+filetype plugin indent on
+endif
+if has('syntax') && !exists('g:syntax_on')
+syntax enable
 endif
 
-         " Use :help 'option' to see the documentation for the given option.
+     " Use :help 'option' to see the documentation for the given option.
 
 set backspace=indent,eol,start
 set complete-=i
@@ -372,8 +363,8 @@ set smarttab
 set nrformats-=octal
 
 if !has('nvim') && &ttimeoutlen == -1
-  set ttimeout
-  set ttimeoutlen=100
+set ttimeout
+set ttimeoutlen=100
 endif
 
 set incsearch
@@ -381,19 +372,19 @@ set incsearch
 set laststatus=2
 
 if !&scrolloff
-  set scrolloff=1
+set scrolloff=1
 endif
 if !&sidescrolloff
-  set sidescrolloff=5
+set sidescrolloff=5
 endif
 set display+=lastline
 
 if &encoding ==# 'latin1' && has('gui_running')
-  set encoding=utf-8
+set encoding=utf-8
 endif
 
 if &listchars ==# 'eol:$'
-  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 endif
 
 if v:version > 703 || v:version == 703 && has("patch541")
