@@ -13,6 +13,7 @@ let badTerminal = 0 " 0 == false, 1 == true
 
 let g:pathogen_disabled = []
 call add(g:pathogen_disabled, 'YouCompleteMe')
+call add(g:pathogen_disabled, 'syntastic')
 if has ("gui_running")
     call add(g:pathogen_disabled, 'vim-tmux-navigator')
 else
@@ -67,10 +68,11 @@ if plugins == 1
     nnoremap <leader>gy :Ggrep "<C-R>""
     nnoremap <leader>gv y:Ggrep "<C-R>""
     nnoremap <leader>gr :Ggrep ""<left>
-    let g:syntastic_cpp_checkers = ['gcc']
+    let g:syntastic_cpp_checkers = ['gcc', 'clang_check', 'clang_tidy' ]
     let g:syntastic_cpp_check_header = 1
     let g:syntastic_cpp_include_dirs = [ '../inc', '../if', 'inc', 'if' ]
-    let g:syntastic_cpp_auto_refresh_includes = 1
+    let g:syntastic_cpp_compiler_options = ' -std=c++0x'
+    " let g:syntastic_cpp_auto_refresh_includes = 1
 endif
 
 set number
