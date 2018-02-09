@@ -27,6 +27,7 @@ endif
 if has('macunix')
     " access the system clipboard as standard (*)
     set clipboard^=unnamed
+    let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 else
     " access the system clipboard as standard (+)
     set clipboard=unnamedplus
@@ -64,7 +65,6 @@ if plugins == 1
     autocmd FileType markdown let g:airline#extensions#whitespace#checks = [ 'indent' ]
     let g:ctrlp_max_files=0
     let g:ctrlp_max_depth=40
-    let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
     nnoremap <leader>gy :Ggrep "<C-R>""
     nnoremap <leader>gv y:Ggrep "<C-R>""
     nnoremap <leader>gr :Ggrep ""<left>
