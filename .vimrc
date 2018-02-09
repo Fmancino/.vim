@@ -68,7 +68,7 @@ if plugins == 1
     nnoremap <leader>gy :Ggrep "<C-R>""
     nnoremap <leader>gv y:Ggrep "<C-R>""
     nnoremap <leader>gr :Ggrep ""<left>
-    let g:syntastic_cpp_checkers = ['gcc', 'clang_check', 'clang_tidy' ]
+    let g:syntastic_cpp_checkers = ['gcc', 'clang_check', 'clang_tidy', 'cpplint' ]
     let g:syntastic_cpp_check_header = 1
     let g:syntastic_cpp_include_dirs = [ '../inc', '../if', 'inc', 'if' ]
     let g:syntastic_cpp_compiler_options = ' -std=c++0x'
@@ -151,6 +151,16 @@ set smartcase
 set tabstop=4        " tab width is 4 spaces
 set shiftwidth=4     " indent also with 4 spaces
 set expandtab        " expand tabs to spaces
+
+function Codestyle()
+    retab
+    %s/\m\(\/\/\+<\?\)\([</]\|\s\|\n\)\@!/\1 /c
+    %s/\m\([-=><]\|\s\)\@<!\([=<>]\?[=<>]\)\([=><]\|\s\|\n\)\@!/ \2 /gc
+    %s/,\S\@=/, /gc
+    %s/ ;/;/gc
+endfunction
+command Codestyle execute "call Codestyle()"
+
 
 set showmatch
 set hlsearch
