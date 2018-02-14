@@ -52,6 +52,11 @@ set mouse=a "be able to use mouse
 colo mymolo
 set colorcolumn=80
 
+" to make quickfix work better
+" set makeprg=vadduvill
+" copen
+set shell=bash
+
 " read files when they change
 set autoread
 
