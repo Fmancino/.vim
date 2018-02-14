@@ -84,6 +84,8 @@ syntax on
 
 filetype plugin indent on
 
+" nnoremap P PggVG=''
+
 set modelines=0  "security issues
 
 " :set mouse=""
@@ -280,6 +282,7 @@ inoremap ä }
 inoremap ö {
 inoremap ö {}<left>
 inoremap ö<CR> {<CR>}<ESC>O
+inoremap {<CR> {<CR>}<ESC>O
 vnoremap € $
 vnoremap ¤ $
 vnoremap å [
