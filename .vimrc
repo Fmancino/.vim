@@ -52,6 +52,13 @@ set mouse=a "be able to use mouse
 colo mymolo
 set colorcolumn=80
 
+" read files when they change
+set autoread
+
+" save when anything happens
+set autowrite
+set autowriteall
+
 " Set spelling on git commits
 autocmd FileType gitcommit setlocal spell
 
@@ -437,8 +444,6 @@ endif
 if &shell =~# 'fish$' && (v:version < 704 || v:version == 704 && !has('patch276'))
   set shell=/bin/bash
 endif
-
-set autoread
 
 if &history < 1000
   set history=1000
