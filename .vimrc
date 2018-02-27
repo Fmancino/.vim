@@ -175,6 +175,12 @@ function Codestyle()
 endfunction
 command Codestyle execute "call Codestyle()"
 
+function! FindInGitRepository(name)
+    cex system('git-ls-quickfix ' . a:name)
+    copen
+endfunction
+command! -range -nargs=1 F :call FindInGitRepository(<q-args>)
+
 " DELETE BUFFERS-----------------------------------
 " Do a :ls to see buffer numbers and them :x,ybd to delete buffers from number x to y
 " from aswer by atomicules
