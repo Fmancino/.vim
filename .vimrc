@@ -17,18 +17,19 @@ call add(g:pathogen_disabled, 'syntastic')
 if has ("gui_running")
     call add(g:pathogen_disabled, 'vim-tmux-navigator')
 else
-"    call add(g:pathogen_disabled, 'ctrlp')
-"    call add(g:pathogen_disabled, 'ctrlp-py-matcher')
-    call add(g:pathogen_disabled, 'nerdtree')
     call add(g:pathogen_disabled, 'vim-airline')
 endif
+call add(g:pathogen_disabled, 'ctrlp')
+call add(g:pathogen_disabled, 'ctrlp-py-matcher')
 
 " Operating systems: macunix unix win32 win32unix
 if has('macunix')
     " access the system clipboard as standard (*)
+    set guifont=Monaco:h13
     set clipboard^=unnamed
     let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 else
+    set guifont=Inconsolata\ 13
     " access the system clipboard as standard (+)
     set clipboard=unnamedplus
 endif
@@ -374,7 +375,6 @@ cnoremap <Esc>d <S-right><C-w>
 "  map <M-Up> [s
 "endif
 
-set guifont=Inconsolata\ 13
 
 autocmd QuickFixCmdPost *grep* cwindow
 
