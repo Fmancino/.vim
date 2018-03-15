@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+#-------------------------------------------------------------------------
+#FILENAME: b-cmake.sh
+
+#PURPOSE: A wrapper around cmake to make the building process easyer
+
+#CREATION DATE: 15-03-2018
+
+#LAST MODIFIED: Thu Mar 15 21:27:22 2018
+
+#AUTHOR: Francesco Mancino, francescoman@protonmail.com
+#-------------------------------------------------------------------------
+case $# in
+    0)
+        echo 'Call cmake .. in current directory:'
+        cmake ..
+        ;;
+    1)
+        echo "Executing cd $1 && cmake .."
+        cd $1 && cmake ..
+        ;;
+    2)
+        echo "Executing cd $1 && cmake $2"
+        cd $1 && cmake $2
+        ;;
+esac
+echo 'Build program:'
+make
