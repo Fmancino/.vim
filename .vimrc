@@ -215,6 +215,7 @@ nnoremap <leader>f :find *
 nnoremap <leader>e :Ex<Enter>
 nnoremap <leader>n :NERDTree<Enter>
 nnoremap <leader>N :NERDTreeClose<Enter>
+nnoremap <leader>m "myiw:!get-merge <C-R>m<Enter>
 inoremap <Tab> <C-N>
 
 nnoremap <leader>cf :let @+=expand("%:p")<CR>    " Mnemonic: Copy File path
@@ -392,7 +393,10 @@ autocmd bufwritepost,filewritepost *.sh execute "normal `a"
 
 autocmd bufnewfile *.py so ~/.vim/templates/python3_header.txt
 
-
+augroup quickfix
+    autocmd!
+    autocmd FileType qf setlocal nospell
+augroup END
 
 "Sensible.vim - Defaults everyone can agree on
 " Maintainer:   Tim Pope <http://tpo.pe/>
