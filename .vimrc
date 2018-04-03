@@ -7,7 +7,7 @@ set fenc=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8 " The encoding written to file.
 
-let mapleader = "," "the <leader> map
+let mapleader = " " "the <leader> map
 let plugins = 1 " 0 == false, 1 == true
 let badTerminal = 0 " 0 == false, 1 == true
 
@@ -167,14 +167,14 @@ set tabstop=4        " tab width is 4 spaces
 set shiftwidth=4     " indent also with 4 spaces
 set expandtab        " expand tabs to spaces
 
-function Codestyle()
+function! Codestyle()
     retab
     %s/\m\(\/\/\+<\?\)\([</]\|\s\|\n\)\@!/\1 /c
     %s/\m\([-=><]\|\s\)\@<!\([=<>]\?[=<>]\)\([=><]\|\s\|\n\)\@!/ \2 /gc
     %s/,\S\@=/, /gc
     %s/ ;/;/gc
 endfunction
-command Codestyle execute "call Codestyle()"
+command! Codestyle execute "call Codestyle()"
 
 function! FindInGitRepository(name)
     cex system('git-ls-quickfix ' . a:name)
@@ -234,9 +234,8 @@ set formatoptions=qrn1
 " Enhanced keyboard mappings
 "
 " in normal  will save the file
-nnoremap <leader-M> :w<CR>
-" in insert will exit insert, save, enters insert again
-inoremap <leader-M> <ESC>:w<CR>i
+nnoremap <leader>w :w<CR>
+
 " switch between header/source with F4
 map <F4> :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<CR>
 
@@ -323,24 +322,18 @@ ino < <><left>
 ino << <<
 
 "do not need to press ESC to save and exit from insert mode
-noremap <leader>q <ESC>:wq<CR>
 inoremap :wq <ESC>:wq<CR>
 inoremap ZZ <ESC>:wq<CR>
 inoremap <C-S> <ESC>:w<CR>
 nnoremap <C-S> :w<CR>
 
 "Copy paste to clipboard
-vnoremap <Leader>y "+y
-nnoremap <Leader>v o<ESC>"+p
-inoremap <Leader>v <ESC>"+p
-cnoremap <Leader>v <C-R>+
-vnoremap <Leader>v "+p
-nnoremap <Leader>x "+d
-vnoremap <Leader>x "+d
+nnoremap <Leader>p o<ESC>"+p
+inoremap <C-V> <ESC>"+p<ESC>
+cnoremap <C-V> <C-R>+
 
 " Add a ; in the end of line
-nnoremap <Leader>; $a;<ESC>
-inoremap <Leader>; <ESC>$a;<ESC>
+nnoremap <Leader>, $a;<ESC>
 
 
 " Skip pressing o end esc all the time i need a space
