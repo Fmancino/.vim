@@ -329,7 +329,7 @@ nnoremap <C-S> :w<CR>
 
 "Copy paste to clipboard
 nnoremap <Leader>p o<ESC>"+p
-inoremap <C-V> <ESC>"+p<ESC>
+inoremap <C-V> <ESC>"+pa
 cnoremap <C-V> <C-R>+
 
 " Add a ; in the end of line
