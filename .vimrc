@@ -333,7 +333,7 @@ inoremap <C-V> <ESC>"+pa
 cnoremap <C-V> <C-R>+
 
 " Add a ; in the end of line
-nnoremap <Leader>, $a;<ESC>
+nnoremap <Leader>; $a;<ESC>
 
 
 " Skip pressing o end esc all the time i need a space
