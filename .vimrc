@@ -344,7 +344,7 @@ nnoremap <S-Enter> o<Esc>
 " Import some emacs in the command mode:
 cnoremap <C-a>  <Home>
 cnoremap <C-b>  <Left>
-cnoremap <C-f>  <Right>
+"cnoremap <C-f>  <Right>
 cnoremap <C-p>  <Up>
 cnoremap <C-n>  <Down>
 cnoremap <C-d>  <Delete>
