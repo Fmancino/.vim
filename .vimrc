@@ -97,11 +97,7 @@ syntax on
 
 filetype plugin indent on
 
-" nnoremap P PggVG=''
-
 set modelines=0  "security issues
-
-" :set mouse=""
 
 " FINDING FILES:
 
